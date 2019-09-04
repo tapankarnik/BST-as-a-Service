@@ -134,11 +134,13 @@ class BST:
         Parameters:
             current (Node): The root node from which to print the tree (optional).
         """
-
-        if current:
-            self.inorder(current.left)
-            print(str(current.val) + " ", end="")
-            self.inorder(current.right)
+		
+	   # returnlist = []
+	   # if current:
+	   #     self.inorder(current.left)
+	   #     returnlist.append(str(current.val) + " ")
+	   #     self.inorder(current.right)
+        return (self.inorder(current.left) + [current.val] + self.inorder(current.right)) if current else []
 
     def get_inorder_successor(self, current):
         """
@@ -172,12 +174,13 @@ if __name__ == '__main__':
         elif u_input == 2:
             print("Enter a valueto search.")
             val = int(input())
-            TREE.search(val)
+            print("Found") if TREE.search(val) else print("Not Found")
         elif u_input == 3:
-            TREE.inorder(TREE.root)
+            print(TREE.inorder(TREE.root))
         elif u_input == 4:
             print("Enter a value to delete.")
             val = int(input())
             TREE.delete(val, TREE.root)
+            #printi("Deletion successful") if TREE.delete(val, TREE.root) else print("Not Found")
         else:
             exit()

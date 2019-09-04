@@ -23,10 +23,10 @@ class TestBST(unittest.TestCase):
         tree.insert(12)
         captured_output = io.StringIO()
         sys.stdout = captured_output
-        tree.inorder(tree.root)
+        print(tree.inorder(tree.root))
         sys.stdout = sys.__stdout__
         output = captured_output.getvalue()
-        self.assertEqual(output, "1 3 4 5 6 7 12 ")
+        self.assertEqual(output, "[1, 3, 4, 5, 6, 7, 12]\n")
 
     def test_search(self):
         """This test checks the search method."""
@@ -58,10 +58,10 @@ class TestBST(unittest.TestCase):
         self.assertEqual(tree.get_inorder_successor(tree.root.right).val, tree.root.right.left.val)
         captured_output = io.StringIO()
         sys.stdout = captured_output
-        tree.inorder(tree.root)
+        print(tree.inorder(tree.root))
         sys.stdout = sys.__stdout__
         output = captured_output.getvalue()
-        self.assertEqual(output, "1 3 4 5 6 7 12 ")
+        self.assertEqual(output, "[1, 3, 4, 5, 6, 7, 12]\n")
 
 
     def test_delete_node(self):
@@ -79,38 +79,52 @@ class TestBST(unittest.TestCase):
         tree.delete(5, tree.root)
         captured_output = io.StringIO()
         sys.stdout = captured_output
-        tree.inorder(tree.root)
+        print(tree.inorder(tree.root))
         sys.stdout = sys.__stdout__
         output = captured_output.getvalue()
-        self.assertTrue(output, "1 3 4 6 7 12 ")
+        self.assertEqual(output, "[1, 3, 4, 6, 7, 12]\n")
 
         tree.delete(7, tree.root)
         captured_output = io.StringIO()
         sys.stdout = captured_output
-        tree.inorder(tree.root)
+        print(tree.inorder(tree.root))
         sys.stdout = sys.__stdout__
-        self.assertTrue(output, "1 3 4 6 12 ")
+        output = captured_output.getvalue()
+        self.assertEqual(output, "[1, 3, 4, 6, 12]\n")
 
         tree.delete(1, tree.root)
         captured_output = io.StringIO()
         sys.stdout = captured_output
-        tree.inorder(tree.root)
+        print(tree.inorder(tree.root))
         sys.stdout = sys.__stdout__
-        self.assertTrue(output, "3 4 6 12 ")
+        output = captured_output.getvalue()
+        self.assertEqual(output, "[3, 4, 6, 12]\n")
 
         tree.delete(3, tree.root)
         captured_output = io.StringIO()
         sys.stdout = captured_output
-        tree.inorder(tree.root)
+        print(tree.inorder(tree.root))
         sys.stdout = sys.__stdout__
-        self.assertTrue(output, "4 6 12")
+        output = captured_output.getvalue()
+        self.assertEqual(output, "[4, 6, 12]\n")
 
         tree.delete(66, tree.root)
         captured_output = io.StringIO()
         sys.stdout = captured_output
-        tree.inorder(tree.root)
+        print(tree.inorder(tree.root))
         sys.stdout = sys.__stdout__
-        self.assertTrue(output, "4 6 12 ")
+        output = captured_output.getvalue()
+        self.assertEqual(output, "[4, 6, 12]\n")
+
+        tree.delete(12, tree.root)
+        tree.delete(6, tree.root)
+        tree.delete(4, tree.root)
+        captured_output = io.StringIO()
+        sys.stdout = captured_output
+        print(tree.inorder(tree.root))
+        sys.stdout = sys.__stdout__
+        output = captured_output.getvalue()
+        self.assertEqual(output, "[]\n")
 
 if __name__ == '__main__':
     unittest.main()
