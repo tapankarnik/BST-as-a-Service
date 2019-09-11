@@ -76,7 +76,7 @@ class TestBST(unittest.TestCase):
         tree.insert(6)
         tree.insert(12)
 
-        tree.delete(5, tree.root)
+        tree.root=tree.delete(5, tree.root)
         captured_output = io.StringIO()
         sys.stdout = captured_output
         print(tree.inorder(tree.root))
@@ -84,7 +84,7 @@ class TestBST(unittest.TestCase):
         output = captured_output.getvalue()
         self.assertEqual(output, "[1, 3, 4, 6, 7, 12]\n")
 
-        tree.delete(7, tree.root)
+        tree.root=tree.delete(7, tree.root)
         captured_output = io.StringIO()
         sys.stdout = captured_output
         print(tree.inorder(tree.root))
@@ -92,7 +92,7 @@ class TestBST(unittest.TestCase):
         output = captured_output.getvalue()
         self.assertEqual(output, "[1, 3, 4, 6, 12]\n")
 
-        tree.delete(1, tree.root)
+        tree.root=tree.delete(1, tree.root)
         captured_output = io.StringIO()
         sys.stdout = captured_output
         print(tree.inorder(tree.root))
@@ -100,7 +100,7 @@ class TestBST(unittest.TestCase):
         output = captured_output.getvalue()
         self.assertEqual(output, "[3, 4, 6, 12]\n")
 
-        tree.delete(3, tree.root)
+        tree.root=tree.delete(3, tree.root)
         captured_output = io.StringIO()
         sys.stdout = captured_output
         print(tree.inorder(tree.root))
@@ -108,7 +108,7 @@ class TestBST(unittest.TestCase):
         output = captured_output.getvalue()
         self.assertEqual(output, "[4, 6, 12]\n")
 
-        tree.delete(66, tree.root)
+        tree.root=tree.delete(66, tree.root)
         captured_output = io.StringIO()
         sys.stdout = captured_output
         print(tree.inorder(tree.root))
@@ -116,9 +116,9 @@ class TestBST(unittest.TestCase):
         output = captured_output.getvalue()
         self.assertEqual(output, "[4, 6, 12]\n")
 
-        tree.delete(12, tree.root)
-        tree.delete(6, tree.root)
-        tree.delete(4, tree.root)
+        tree.root=tree.delete(12, tree.root)
+        tree.root=tree.delete(6, tree.root)
+        tree.root=tree.delete(4, tree.root)
         captured_output = io.StringIO()
         sys.stdout = captured_output
         print(tree.inorder(tree.root))

@@ -40,24 +40,25 @@ class BST:
         if self.root is None:
             self.root = Node(key)
             # print("Node Added to root")
-        else:
-            if current is None:
-                current = self.root
-            if key < current.val:
-                if current.left is None:
-                    current.left = Node(key)
-                    # print("Node Added Left")
-                else:
-                    self.insert(key, current.left)
-            elif key > current.val:
-                if current.right is None:
-                    current.right = Node(key)
-                    # print("Node Added Right")
-                else:
-                    self.insert(key, current.right)
+
+        if current is None:
+            current = self.root
+
+        if key < current.val:
+            if current.left is None:
+                current.left = Node(key)
+                # print("Node Added Left")
             else:
-                # print("Value already present")
-                pass
+                self.insert(key, current.left)
+        elif key > current.val:
+            if current.right is None:
+                current.right = Node(key)
+                # print("Node Added Right")
+            else:
+                self.insert(key, current.right)
+        else:
+            # print("Value already present")
+            pass
 
     def search(self, key, current=None):
         """
@@ -180,7 +181,7 @@ if __name__ == '__main__':
         elif u_input == 4:
             print("Enter a value to delete.")
             val = int(input())
-            TREE.delete(val, TREE.root)
+            TREE.root = TREE.delete(val, TREE.root)
             #printi("Deletion successful") if TREE.delete(val, TREE.root) else print("Not Found")
         else:
             exit()
