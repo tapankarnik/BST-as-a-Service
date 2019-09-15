@@ -1,6 +1,6 @@
 from app import app
 import sys
-from flask import request
+from flask import request, render_template
 #sys.path.insert(1, '../src/bst')
 #print(sys.path)
 from src.bst import bst
@@ -10,8 +10,8 @@ obj = bst.BST()
 @app.route('/')
 @app.route('/index')
 def index():
-    msg = "Hello There\nWelcome to BST-as-a-service\nGo to /insert?key=element to perform operations"
-    return msg
+    #msg = "Hello There\nWelcome to BST-as-a-service\nGo to /insert?key=element to perform operations"
+    return render_template('index.html')
 
 @app.route('/insert')
 def insert():
